@@ -23,22 +23,35 @@ abstract public class Person
     protected String rg;
     protected String address;
 
-    public Person(int id, String name) {
+    public Person(int id, String name) 
+    {
         this.id = id;
         this.name = name;
     }
 
-    public Person(int id, String name, String borndt, String phone, String rg, String address) {
+    public Person(int id, String name, String borndt, String phone, String rg, String address) 
+    {
         this.id = id;
         this.name = name;
-        try
+
+        // Inicializa o parser de data apenas se borndt não for nulo
+        if (borndt != null && !borndt.trim().isEmpty()) 
         {
-            this.borndt = new SimpleDateFormat("dd/mm/yyyy HH:mm").parse(borndt);
-        }
-        catch(ParseException ex)
+            try 
+            {
+                this.borndt = new SimpleDateFormat("dd/MM/yyyy").parse(borndt);
+            } 
+            catch(ParseException ex) 
+            {
+                Logger.getLogger(Person.class.getName()).log(Level.SEVERE, "Erro ao converter data de nascimento", ex);
+                this.borndt = null;
+            }
+        } 
+        else 
         {
-           Logger.getLogger(Schedule.class.getName()).log(Level.SEVERE, null, ex);
+            this.borndt = null;
         }
+
         this.phone = phone;
         this.rg = rg;
         this.address = address;

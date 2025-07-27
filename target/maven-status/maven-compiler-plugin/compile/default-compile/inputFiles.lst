@@ -1,5 +1,6 @@
 /home/david/NetBeansProjects/BarberShop/src/main/java/Controller/Helpers/LoginHelper.java
 /home/david/NetBeansProjects/BarberShop/src/main/java/Controller/LoginController.java
+/home/david/NetBeansProjects/BarberShop/src/main/java/Controller/PrincipalMenuController.java
 /home/david/NetBeansProjects/BarberShop/src/main/java/ModelDAO/ClientDAO.java
 /home/david/NetBeansProjects/BarberShop/src/main/java/ModelDAO/Database.java
 /home/david/NetBeansProjects/BarberShop/src/main/java/ModelDAO/ScheduleDAO.java

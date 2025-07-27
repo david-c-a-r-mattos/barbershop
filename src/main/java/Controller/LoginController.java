@@ -39,10 +39,11 @@ public class LoginController {
             {
                 PrincipalMenu menu = new PrincipalMenu();
                 menu.setVisible(true);
+                this.view.dispose();
             }
             else
             {
-                view.showMessage("Usuário ou senha inválidos!");
+                view.showMessage("Usuário e senha inválidos!");
             }
         } 
         catch (SQLException ex) 
