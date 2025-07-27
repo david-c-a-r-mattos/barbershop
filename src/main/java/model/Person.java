@@ -34,24 +34,32 @@ abstract public class Person
         this.id = id;
         this.name = name;
 
-        // Inicializa o parser de data apenas se borndt não for nulo
         if (borndt != null && !borndt.trim().isEmpty()) 
         {
             try 
             {
-                this.borndt = new SimpleDateFormat("dd/MM/yyyy").parse(borndt);
+                // Primeiro tenta o formato ISO (yyyy-MM-dd)
+                this.borndt = new SimpleDateFormat("yyyy-MM-dd").parse(borndt);
             } 
-            catch(ParseException ex) 
-            {
-                Logger.getLogger(Person.class.getName()).log(Level.SEVERE, "Erro ao converter data de nascimento", ex);
-                this.borndt = null;
-            }
+                catch (ParseException e1) 
+                {
+                    try 
+                    {
+                        // Se falhar, tenta o formato brasileiro (dd/MM/yyyy)
+                        this.borndt = new SimpleDateFormat("dd/MM/yyyy").parse(borndt);
+                    } 
+                    catch (ParseException e2) 
+                    {
+                        Logger.getLogger(Person.class.getName()).log(Level.SEVERE, 
+                            "Formato de data inválido: " + borndt + ". Use yyyy-MM-dd ou dd/MM/yyyy", e2);
+                        this.borndt = null;
+                    }
+                }
         } 
         else 
         {
             this.borndt = null;
         }
-
         this.phone = phone;
         this.rg = rg;
         this.address = address;

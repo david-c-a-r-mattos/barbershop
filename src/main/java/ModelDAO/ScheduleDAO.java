@@ -14,6 +14,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
@@ -23,6 +24,10 @@ public class ScheduleDAO {
     private final Connection connection;
     private final ClientDAO clientDAO;
     private final ServiceDAO serviceDAO;
+    private static final SimpleDateFormat[] DATE_FORMATS = {
+        new SimpleDateFormat("yyyy-MM-dd HH:mm"),  // Formato ISO
+        new SimpleDateFormat("dd/MM/yyyy HH:mm")   // Formato brasileiro
+    };
 
     public ScheduleDAO(Connection connection) {
         this.connection = connection;
@@ -30,7 +35,6 @@ public class ScheduleDAO {
         this.serviceDAO = new ServiceDAO(connection);
     }
 
-    // Método para inserir um novo agendamento
     public void create(Schedule schedule) throws SQLException {
         String sql = "INSERT INTO schedules (id, client_id, service_id, value, date, observation) VALUES (?, ?, ?, ?, ?, ?)";
         
@@ -45,7 +49,6 @@ public class ScheduleDAO {
         }
     }
 
-    // Método para buscar um agendamento pelo ID
     public Schedule read(int id) throws SQLException {
         String sql = "SELECT * FROM schedules WHERE id = ?";
         Schedule schedule = null;
@@ -63,7 +66,7 @@ public class ScheduleDAO {
                     client,
                     service,
                     rs.getFloat("value"),
-                    new SimpleDateFormat("dd/MM/yyyy HH:mm").format(rs.getTimestamp("date"))
+                    formatDate(rs.getTimestamp("date"))
                 );
                 schedule.setObservation(rs.getString("observation"));
             }
@@ -73,7 +76,6 @@ public class ScheduleDAO {
         return schedule;
     }
 
-    // Método para atualizar um agendamento
     public void update(Schedule schedule) throws SQLException {
         String sql = "UPDATE schedules SET client_id = ?, service_id = ?, value = ?, date = ?, observation = ? WHERE id = ?";
         
@@ -88,7 +90,6 @@ public class ScheduleDAO {
         }
     }
 
-    // Método para deletar um agendamento
     public void delete(int id) throws SQLException {
         String sql = "DELETE FROM schedules WHERE id = ?";
         
@@ -98,7 +99,6 @@ public class ScheduleDAO {
         }
     }
 
-    // Método para listar todos os agendamentos
     public List<Schedule> listAll() throws SQLException {
         List<Schedule> schedules = new ArrayList<>();
         String sql = "SELECT * FROM schedules";
@@ -115,7 +115,7 @@ public class ScheduleDAO {
                     client,
                     service,
                     rs.getFloat("value"),
-                    new SimpleDateFormat("dd/MM/yyyy HH:mm").format(rs.getTimestamp("date"))
+                    formatDate(rs.getTimestamp("date"))
                 );
                 schedule.setObservation(rs.getString("observation"));
                 schedules.add(schedule);
@@ -126,91 +126,31 @@ public class ScheduleDAO {
         return schedules;
     }
 
-    // Método para buscar agendamentos por cliente
-    public List<Schedule> findByClient(int clientId) throws SQLException {
-        List<Schedule> schedules = new ArrayList<>();
-        String sql = "SELECT * FROM schedules WHERE client_id = ?";
-        
-        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-            stmt.setInt(1, clientId);
-            ResultSet rs = stmt.executeQuery();
-            
-            while (rs.next()) {
-                Client client = clientDAO.read(rs.getInt("client_id"));
-                Service service = serviceDAO.read(rs.getInt("service_id"));
-                
-                Schedule schedule = new Schedule(
-                    rs.getInt("id"),
-                    client,
-                    service,
-                    rs.getFloat("value"),
-                    new SimpleDateFormat("dd/MM/yyyy HH:mm").format(rs.getTimestamp("date"))
-                );
-                schedule.setObservation(rs.getString("observation"));
-                schedules.add(schedule);
-            }
-        } catch (Exception ex) {
-            Logger.getLogger(ScheduleDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return schedules;
+    // Métodos auxiliares para tratamento de datas
+    private String formatDate(Timestamp timestamp) {
+        if (timestamp == null) return "";
+        return new SimpleDateFormat("dd/MM/yyyy HH:mm").format(new Date(timestamp.getTime()));
     }
 
-    // Método para buscar agendamentos por data
-    public List<Schedule> findByDate(Date date) throws SQLException {
-        List<Schedule> schedules = new ArrayList<>();
-        String sql = "SELECT * FROM schedules WHERE DATE(date) = ?";
-        
-        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-            stmt.setDate(1, new java.sql.Date(date.getTime()));
-            ResultSet rs = stmt.executeQuery();
-            
-            while (rs.next()) {
-                Client client = clientDAO.read(rs.getInt("client_id"));
-                Service service = serviceDAO.read(rs.getInt("service_id"));
-                
-                Schedule schedule = new Schedule(
-                    rs.getInt("id"),
-                    client,
-                    service,
-                    rs.getFloat("value"),
-                    new SimpleDateFormat("dd/MM/yyyy HH:mm").format(rs.getTimestamp("date"))
-                );
-                schedule.setObservation(rs.getString("observation"));
-                schedules.add(schedule);
-            }
-        } catch (Exception ex) {
-            Logger.getLogger(ScheduleDAO.class.getName()).log(Level.SEVERE, null, ex);
+    private Date parseDate(String dateString) throws ParseException {
+        if (dateString == null || dateString.trim().isEmpty()) {
+            return null;
         }
-        return schedules;
-    }
-
-    // Método para buscar agendamentos por período
-    public List<Schedule> findByDateRange(Date startDate, Date endDate) throws SQLException {
-        List<Schedule> schedules = new ArrayList<>();
-        String sql = "SELECT * FROM schedules WHERE date BETWEEN ? AND ?";
         
-        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-            stmt.setTimestamp(1, new Timestamp(startDate.getTime()));
-            stmt.setTimestamp(2, new Timestamp(endDate.getTime()));
-            ResultSet rs = stmt.executeQuery();
-            
-            while (rs.next()) {
-                Client client = clientDAO.read(rs.getInt("client_id"));
-                Service service = serviceDAO.read(rs.getInt("service_id"));
-                
-                Schedule schedule = new Schedule(
-                    rs.getInt("id"),
-                    client,
-                    service,
-                    rs.getFloat("value"),
-                    new SimpleDateFormat("dd/MM/yyyy HH:mm").format(rs.getTimestamp("date"))
-                );
-                schedule.setObservation(rs.getString("observation"));
-                schedules.add(schedule);
+        ParseException lastException = null;
+        
+        for (SimpleDateFormat format : DATE_FORMATS) {
+            try {
+                return format.parse(dateString);
+            } catch (ParseException e) {
+                lastException = e;
             }
-        } catch (Exception ex) {
-            Logger.getLogger(ScheduleDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return schedules;
+        
+        if (lastException != null) {
+            throw lastException;
+        }
+        
+        return null;
     }
 }

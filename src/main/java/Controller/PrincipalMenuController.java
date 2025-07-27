@@ -5,7 +5,7 @@
 package Controller;
 
 import view.PrincipalMenu;
-import view.Schedule;
+import view.Scheduling;
 
 /**
  *
@@ -20,7 +20,7 @@ public class PrincipalMenuController
     }
     public void navegateToSchedule()
     {
-        Schedule schedule = new Schedule();
+        Scheduling schedule = new Scheduling();
         schedule.setVisible(true);
     }
 }
