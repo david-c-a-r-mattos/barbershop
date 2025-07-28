@@ -5,14 +5,18 @@
 package Controller;
 
 import Controller.Helpers.ScheduleHelper;
+import ModelDAO.ClientDAO;
 import ModelDAO.Database;
 import ModelDAO.ScheduleDAO;
+import ModelDAO.ServiceDAO;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.Client;
 import model.Schedule;
+import model.Service;
 import view.Scheduling;
 
 /**
@@ -37,6 +41,32 @@ public class ScheduleController
         {
             List<Schedule> arrayList = scheduleDAO.listAll();
             helper.fillTable(arrayList);
+        } 
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(ScheduleController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public void updateClient()
+    {
+        ClientDAO clientDAO = new ClientDAO(connection);
+        try 
+        {
+            List<Client> arrayList = clientDAO.listAll();
+            helper.fillClients(arrayList);
+        } 
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(ScheduleController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public void updateService()
+    {
+        ServiceDAO serviceDAO = new ServiceDAO(connection);
+        try 
+        {
+            List<Service> arrayList = serviceDAO.listAll();
+            helper.fillService(arrayList);
         } 
         catch (SQLException ex) 
         {

@@ -12,7 +12,8 @@ public class Client extends Person
 {
     private String cep;
 
-    public Client(int id, String name, String address, String cep) {
+    public Client(int id, String name, String address, String cep) 
+    {
         super(id, name);
         this.address = address;
         this.cep = cep;
@@ -30,6 +31,11 @@ public class Client extends Person
 
     public void setCep(String cep) {
         this.cep = cep;
+    }
+    @Override
+    public String toString()
+    {
+        return getName();
     }
     
 }

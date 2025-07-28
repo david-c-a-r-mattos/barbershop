@@ -5,8 +5,11 @@
 package Controller.Helpers;
 
 import java.util.List;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
+import model.Client;
 import model.Schedule;
+import model.Service;
 import view.Scheduling;
 
 /**
@@ -36,6 +39,24 @@ public class ScheduleHelper
                 x.getObservation()
             });
             System.out.print(x);
+        }
+    }
+
+    public void fillClients(List<Client> arrayList) 
+    {
+        DefaultComboBoxModel comboBoxModel = (DefaultComboBoxModel) view.getjComboBoxClient().getModel();
+        for(Client x : arrayList)
+        {
+            comboBoxModel.addElement(x);
+        }
+    }
+
+    public void fillService(List<Service> arrayList) 
+    {
+        DefaultComboBoxModel comboBoxModel = (DefaultComboBoxModel) view.getjComboBoxService().getModel();
+        for(Service x : arrayList)
+        {
+            comboBoxModel.addElement(x);
         }
     }
 }

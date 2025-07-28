@@ -44,5 +44,10 @@ public class Service
     public void setValue(float value) {
         this.value = value;
     }
+    @Override
+    public String toString()
+    {
+        return getDescription();
+    }
     
 }

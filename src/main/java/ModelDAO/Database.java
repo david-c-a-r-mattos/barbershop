@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 public class Database {
     private static final String URL = "jdbc:postgresql://localhost:5432/BarberShop";
     private static final String USER = "postgres";
-    private static final String PASSWORD = "Barancara769#$";
+    private static final String PASSWORD = "1234";
     private static Connection connection = null;
     
     public static Connection getConnection() {

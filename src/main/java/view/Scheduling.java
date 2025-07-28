@@ -5,6 +5,7 @@
 package view;
 
 import Controller.ScheduleController;
+import javax.swing.JComboBox;
 import javax.swing.JTable;
 
 public class Scheduling extends javax.swing.JFrame 
@@ -35,8 +36,8 @@ public class Scheduling extends javax.swing.JFrame
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        jComboBoxService = new javax.swing.JComboBox<>();
+        jComboBoxClient = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -79,11 +80,9 @@ public class Scheduling extends javax.swing.JFrame
         jLabel8.setText("Data");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cabelo\t", "Barba" }));
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 170, -1));
+        getContentPane().add(jComboBoxService, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 170, -1));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Alan", "Pedro", "João", "Carlos" }));
-        getContentPane().add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 170, -1));
+        getContentPane().add(jComboBoxClient, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 170, -1));
 
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Observação:");
@@ -141,8 +140,8 @@ public class Scheduling extends javax.swing.JFrame
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> jComboBoxClient;
+    private javax.swing.JComboBox<String> jComboBoxService;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -166,6 +165,8 @@ public class Scheduling extends javax.swing.JFrame
     {
         
         this.controller.updateTable();
+        this.controller.updateClient();
+        this.controller.updateService();
     }
 
     public JTable getjTable() 
@@ -176,6 +177,22 @@ public class Scheduling extends javax.swing.JFrame
     public void setjTable(JTable jTable1) 
     {
         this.jTable = jTable1;
+    }
+
+    public JComboBox<String> getjComboBoxClient() {
+        return jComboBoxClient;
+    }
+
+    public void setjComboBoxClient(JComboBox<String> jComboBoxClient) {
+        this.jComboBoxClient = jComboBoxClient;
+    }
+
+    public JComboBox<String> getjComboBoxService() {
+        return jComboBoxService;
+    }
+
+    public void setjComboBoxService(JComboBox<String> jComboBoxService) {
+        this.jComboBoxService = jComboBoxService;
     }
 
 }
