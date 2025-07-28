@@ -1,6 +1,5 @@
 view/PrincipalMenu$2.class
 Controller/ScheduleController.class
-model/main.class
 ModelDAO/UserDAO.class
 ModelDAO/ClientDAO.class
 ModelDAO/Database.class

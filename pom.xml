@@ -9,7 +9,7 @@
     <version>1.0.0</version>
     <packaging>jar</packaging>
 
-    <name>Barber Shop System</name>
+    <name>Barber Shop</name>
     <description>Sistema de gerenciamento para barbearias com PostgreSQL</description>
 
     <repositories>
