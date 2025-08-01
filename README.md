@@ -1,1 +1,1 @@
-Esse projeto ainda está em andamento.
+Log no sistema pelo usuário admin de senha 1234.
