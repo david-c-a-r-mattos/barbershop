@@ -11,7 +11,7 @@ import view.Login;
  *
  * @author david
  */
-public class LoginHelper 
+public class LoginHelper implements IHelper 
 {
     private final Login view;
 
@@ -19,6 +19,7 @@ public class LoginHelper
     {
         this.view = view;
     }
+    @Override
     public User getModel()
     {
         String name = view.getUserName().getText();
@@ -34,9 +35,9 @@ public class LoginHelper
         view.getUserName().setText(name);
         view.getUserName().setText(password);
     }
-    public void cleanScrean()
+    @Override
+    public void clearScreen()
     {
-        view.getUserName().setText("");
         view.getUserName().setText("");
     }
 }

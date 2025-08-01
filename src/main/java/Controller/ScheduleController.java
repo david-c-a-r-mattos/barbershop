@@ -73,5 +73,12 @@ public class ScheduleController
             Logger.getLogger(ScheduleController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+<<<<<<< HEAD
+=======
+    public void toSchedule()
+    {
+        
+    }
+>>>>>>> cb8d362 (Adicinando interface)
 }
 

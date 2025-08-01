@@ -16,7 +16,7 @@ import view.Scheduling;
  *
  * @author david
  */
-public class ScheduleHelper 
+public class ScheduleHelper implements IHelper
 {
     private final Scheduling view;
 
@@ -58,5 +58,15 @@ public class ScheduleHelper
         {
             comboBoxModel.addElement(x);
         }
+    }
+
+    @Override
+    public Object getModel() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void clearScreen() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
