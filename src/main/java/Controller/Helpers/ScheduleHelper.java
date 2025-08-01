@@ -41,7 +41,14 @@ public class ScheduleHelper implements IHelper
             System.out.print(x);
         }
     }
-
+    public Client getClient()
+    {
+        return (Client) view.getjComboBoxClient().getSelectedItem();
+    }
+    public Service getService()
+    {
+        return (Service) view.getjComboBoxService().getSelectedItem();
+    }
     public void fillClients(List<Client> arrayList) 
     {
         DefaultComboBoxModel comboBoxModel = (DefaultComboBoxModel) view.getjComboBoxClient().getModel();
@@ -61,12 +68,34 @@ public class ScheduleHelper implements IHelper
     }
 
     @Override
-    public Object getModel() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Schedule getModel() 
+    {
+        String idString = view.getjTextId().getText();
+        int id = Integer.parseInt(idString);
+        Client client = getClient();
+        Service service = getService();
+        String valueString = view.getjTextValue().getText();
+        float value = Float.parseFloat(valueString);
+        String date = view.getjTextDate().getText();
+        String time = view.getjTextTime().getText();
+        String dateTime = date+" "+time;
+        String observation = view.getjTextAreaObservation().getText();
+        Schedule schedule = new Schedule(id, client, service, value, dateTime, observation);
+        return schedule;
     }
 
     @Override
-    public void clearScreen() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void clearScreen() 
+    {
+        view.getjTextId().setText("");
+        view.getjTextDate().setText("");
+        view.getjTextTime().setText("");
+        view.getjTextAreaObservation().setText("");
     }
+
+    public void setValue(float value) 
+    {
+        view.getjTextValue().setText(value+"");
+    }
+    
 }

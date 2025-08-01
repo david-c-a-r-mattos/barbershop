@@ -73,12 +73,25 @@ public class ScheduleController
             Logger.getLogger(ScheduleController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-<<<<<<< HEAD
-=======
+    public void updateValue()
+    {
+        Service service = helper.getService();
+        helper.setValue(service.getValue());
+    }
+
     public void toSchedule()
     {
-        
+        Schedule schedule = helper.getModel();
+        try 
+        {
+            new ScheduleDAO(connection).create(schedule);
+        } 
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(ScheduleController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        updateTable();
+        helper.clearScreen();
     }
->>>>>>> cb8d362 (Adicinando interface)
 }
 

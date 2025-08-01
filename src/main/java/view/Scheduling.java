@@ -7,6 +7,8 @@ package view;
 import Controller.ScheduleController;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 public class Scheduling extends javax.swing.JFrame 
 {
@@ -42,12 +44,12 @@ public class Scheduling extends javax.swing.JFrame
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable = new javax.swing.JTable();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        jTextValue = new javax.swing.JTextField();
+        jTextDate = new javax.swing.JTextField();
+        jTextTime = new javax.swing.JTextField();
+        jTextId = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jTextAreaObservation = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -110,14 +112,14 @@ public class Scheduling extends javax.swing.JFrame
         jScrollPane1.setViewportView(jTable);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 580, 140));
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 170, -1));
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, 170, -1));
-        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 180, 170, -1));
-        getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 170, -1));
+        getContentPane().add(jTextValue, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 170, -1));
+        getContentPane().add(jTextDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, 170, -1));
+        getContentPane().add(jTextTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 180, 170, -1));
+        getContentPane().add(jTextId, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 170, -1));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
+        jTextAreaObservation.setColumns(20);
+        jTextAreaObservation.setRows(5);
+        jScrollPane2.setViewportView(jTextAreaObservation);
 
         getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 30, 250, 140));
 
@@ -156,11 +158,11 @@ public class Scheduling extends javax.swing.JFrame
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextArea jTextAreaObservation;
+    private javax.swing.JTextField jTextDate;
+    private javax.swing.JTextField jTextId;
+    private javax.swing.JTextField jTextTime;
+    private javax.swing.JTextField jTextValue;
     // End of variables declaration//GEN-END:variables
 
     private void start() 
@@ -169,6 +171,7 @@ public class Scheduling extends javax.swing.JFrame
         this.controller.updateTable();
         this.controller.updateClient();
         this.controller.updateService();
+        this.controller.updateValue();
     }
 
     public JTable getjTable() 
@@ -196,5 +199,46 @@ public class Scheduling extends javax.swing.JFrame
     public void setjComboBoxService(JComboBox<String> jComboBoxService) {
         this.jComboBoxService = jComboBoxService;
     }
+
+    public JTextArea getjTextAreaObservation() {
+        return jTextAreaObservation;
+    }
+
+    public void setjTextAreaObservation(JTextArea jTextAreaObservation) {
+        this.jTextAreaObservation = jTextAreaObservation;
+    }
+
+    public JTextField getjTextDate() {
+        return jTextDate;
+    }
+
+    public void setjTextDate(JTextField jTextDate) {
+        this.jTextDate = jTextDate;
+    }
+
+    public JTextField getjTextId() {
+        return jTextId;
+    }
+
+    public void setjTextId(JTextField jTextId) {
+        this.jTextId = jTextId;
+    }
+
+    public JTextField getjTextTime() {
+        return jTextTime;
+    }
+
+    public void setjTextTime(JTextField jTextTime) {
+        this.jTextTime = jTextTime;
+    }
+
+    public JTextField getjTextValue() {
+        return jTextValue;
+    }
+
+    public void setjTextValue(JTextField jTextValue) {
+        this.jTextValue = jTextValue;
+    }
+    
 
 }

@@ -37,6 +37,13 @@ public class Schedule {
         }
     }
 
+    public Schedule(int id, Client client, Service service, float value, String date, String observation) 
+    {
+        this(id, client, service, value, date);
+        this.observation = observation;
+    }
+    
+
     public int getId() {
         return id;
     }
