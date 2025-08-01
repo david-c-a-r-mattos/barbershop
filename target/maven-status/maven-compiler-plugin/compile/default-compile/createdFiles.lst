@@ -19,6 +19,7 @@ Controller/Helpers/LoginHelper.class
 model/Person.class
 view/Login$1.class
 Controller/Helpers/ScheduleHelper.class
+view/Scheduling$2.class
 com/mycompany/barbershop/BarberShop.class
 Controller/Helpers/IHelper.class
 model/User.class

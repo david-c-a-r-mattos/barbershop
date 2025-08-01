@@ -82,6 +82,11 @@ public class Scheduling extends javax.swing.JFrame
         jLabel8.setText("Data");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
 
+        jComboBoxService.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBoxServiceItemStateChanged(evt);
+            }
+        });
         getContentPane().add(jComboBoxService, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 170, -1));
 
         getContentPane().add(jComboBoxClient, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 170, -1));
@@ -140,6 +145,10 @@ public class Scheduling extends javax.swing.JFrame
         // TODO add your handling code here:
         this.controller.toSchedule();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jComboBoxServiceItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxServiceItemStateChanged
+        this.controller.updateValue();
+    }//GEN-LAST:event_jComboBoxServiceItemStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
