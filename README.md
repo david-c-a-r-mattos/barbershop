@@ -1,1 +1,1 @@
-Log no sistema pelo usuário admin de senha 1234.
+Projeto desenvolvido no curso de Java do canal While True. Log no sistema pelo usuário admin de senha 1234, e lhe será permitido fazer o agendamento. Evidente que o projeto ainda não está completo, faltando fazer cadastro de usuários e serviços, exclusão de agendamento dentre outras funções.
