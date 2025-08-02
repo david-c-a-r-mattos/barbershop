@@ -60,7 +60,7 @@ public class PrincipalMenu extends javax.swing.JFrame {
 
         jMenu3.setText("Operação");
 
-        jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/schedule.png"))); // NOI18N
+        jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/scheduling_icon.png"))); // NOI18N
         jMenuItem3.setText("Agenda");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
