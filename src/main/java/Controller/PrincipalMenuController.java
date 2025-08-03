@@ -4,7 +4,6 @@
  */
 package Controller;
 
-import javax.swing.JOptionPane;
 import view.Clients;
 import view.PrincipalMenu;
 import view.Scheduling;
