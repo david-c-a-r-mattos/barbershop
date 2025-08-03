@@ -4,17 +4,18 @@
  */
 package view;
 
-import Controller.LoginController;
 import Controller.PrincipalMenuController;
 
 /**
  *
  * @author david
  */
-public class PrincipalMenu extends javax.swing.JFrame {
+public class PrincipalMenu extends javax.swing.JFrame 
+{
 
     private final PrincipalMenuController controller;
-    public PrincipalMenu() {
+    public PrincipalMenu() 
+    {
         initComponents();
         this.controller = new PrincipalMenuController(this);
     }
@@ -31,30 +32,35 @@ public class PrincipalMenu extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItemClient = new javax.swing.JMenuItem();
+        jMenuItemService = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/images/principal_menu.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/principal_menu.png"))); // NOI18N
 
         jMenu1.setText("Cadastro");
-
-        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/images/client_icon.png"))); // NOI18N
-        jMenuItem1.setText("Cliente");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        jMenu1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                jMenu1ActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
 
-        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/images/service_icon.png"))); // NOI18N
-        jMenuItem2.setText("Serviço");
-        jMenu1.add(jMenuItem2);
+        jMenuItemClient.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/client_icon.png"))); // NOI18N
+        jMenuItemClient.setText("Cliente");
+        jMenuItemClient.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemClientActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItemClient);
+
+        jMenuItemService.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/service_icon.png"))); // NOI18N
+        jMenuItemService.setText("Serviço");
+        jMenu1.add(jMenuItemService);
 
         jMenuBar1.add(jMenu1);
 
@@ -90,14 +96,19 @@ public class PrincipalMenu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    private void jMenuItemClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemClientActionPerformed
+         
+        this.controller.navegateToClients();
+    }//GEN-LAST:event_jMenuItemClientActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // TODO add your handling code here:
         this.controller.navegateToSchedule();
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -140,8 +151,8 @@ public class PrincipalMenu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItemClient;
+    private javax.swing.JMenuItem jMenuItemService;
     // End of variables declaration//GEN-END:variables
 }

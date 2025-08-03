@@ -1,6 +1,7 @@
 view/PrincipalMenu$2.class
 Controller/ScheduleController.class
 ModelDAO/UserDAO.class
+Controller/Helpers/PrincipalMenuHelper.class
 ModelDAO/ClientDAO.class
 ModelDAO/Database.class
 model/Client.class
@@ -11,6 +12,7 @@ view/Scheduling.class
 model/Schedule.class
 ModelDAO/ServiceDAO.class
 ModelDAO/ScheduleDAO.class
+Controller/ClientsController.class
 model/Service.class
 view/Scheduling$1.class
 view/PrincipalMenu$1.class
@@ -19,9 +21,11 @@ Controller/Helpers/LoginHelper.class
 model/Person.class
 view/Login$1.class
 Controller/Helpers/ScheduleHelper.class
+view/PrincipalMenu$4.class
 view/Scheduling$2.class
 com/mycompany/barbershop/BarberShop.class
 Controller/Helpers/IHelper.class
 model/User.class
+view/Clients.class
 Controller/PrincipalMenuController.class
 view/PrincipalMenu.class

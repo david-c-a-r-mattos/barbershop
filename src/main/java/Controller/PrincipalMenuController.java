@@ -4,6 +4,8 @@
  */
 package Controller;
 
+import javax.swing.JOptionPane;
+import view.Clients;
 import view.PrincipalMenu;
 import view.Scheduling;
 
@@ -20,7 +22,13 @@ public class PrincipalMenuController
     }
     public void navegateToSchedule()
     {
-        Scheduling schedule = new Scheduling();
-        schedule.setVisible(true);
+        Scheduling scheduling = new Scheduling();
+        scheduling.setVisible(true);
+    }
+
+    public void navegateToClients() 
+    {
+        Clients clients = new Clients();
+        clients.setVisible(true);
     }
 }

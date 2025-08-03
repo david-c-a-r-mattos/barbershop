@@ -87,7 +87,7 @@ public class ScheduleHelper implements IHelper
     @Override
     public void clearScreen() 
     {
-        view.getjTextId().setText("");
+        view.getjTextId().setText("0");
         view.getjTextDate().setText("");
         view.getjTextTime().setText("");
         view.getjTextAreaObservation().setText("");
