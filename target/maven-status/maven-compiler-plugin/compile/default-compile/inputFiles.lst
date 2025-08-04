@@ -1,4 +1,5 @@
 /home/david/NetBeansProjects/barbershop/src/main/java/Controller/ClientsController.java
+/home/david/NetBeansProjects/barbershop/src/main/java/Controller/Helpers/ClientsHelper.java
 /home/david/NetBeansProjects/barbershop/src/main/java/Controller/Helpers/IHelper.java
 /home/david/NetBeansProjects/barbershop/src/main/java/Controller/Helpers/LoginHelper.java
 /home/david/NetBeansProjects/barbershop/src/main/java/Controller/Helpers/PrincipalMenuHelper.java

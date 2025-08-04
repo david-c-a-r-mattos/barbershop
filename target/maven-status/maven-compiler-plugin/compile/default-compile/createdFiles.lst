@@ -4,6 +4,7 @@ ModelDAO/UserDAO.class
 Controller/Helpers/PrincipalMenuHelper.class
 ModelDAO/ClientDAO.class
 view/Clients$1.class
+Controller/Helpers/ClientsHelper.class
 ModelDAO/Database.class
 model/Client.class
 view/Login$2.class

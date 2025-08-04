@@ -5,6 +5,7 @@
 package view;
 
 import Controller.ClientsController;
+import javax.swing.JTable;
 
 /**
  *
@@ -18,6 +19,7 @@ public class Clients extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         this.controller = new ClientsController(this);
+        this.controller.updateTable();
     }
 
     /**
@@ -30,13 +32,13 @@ public class Clients extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTable = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
@@ -47,7 +49,7 @@ public class Clients extends javax.swing.JFrame {
                 "ID", "Nome", "Endereço", "CEP", "Telefone", "RG", "DT_Nascimento"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTable);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 50, 610, 270));
 
@@ -92,9 +94,18 @@ public class Clients extends javax.swing.JFrame {
         });
     }
 
+    public JTable getjTable() {
+        return jTable;
+    }
+
+    public void setjTable(JTable jTable) {
+        this.jTable = jTable;
+    }
+    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable;
     // End of variables declaration//GEN-END:variables
 }
