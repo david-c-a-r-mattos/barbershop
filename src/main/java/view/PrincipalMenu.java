@@ -17,6 +17,7 @@ public class PrincipalMenu extends javax.swing.JFrame
     public PrincipalMenu() 
     {
         initComponents();
+        setLocationRelativeTo(null);
         this.controller = new PrincipalMenuController(this);
     }
 

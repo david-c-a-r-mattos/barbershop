@@ -16,6 +16,7 @@ public class Clients extends javax.swing.JFrame {
     public Clients() 
     {
         initComponents();
+        setLocationRelativeTo(null);
         this.controller = new ClientsController(this);
     }
 
@@ -32,7 +33,7 @@ public class Clients extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(

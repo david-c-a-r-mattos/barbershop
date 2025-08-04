@@ -19,6 +19,7 @@ public class Scheduling extends javax.swing.JFrame
     public Scheduling() 
     {
         initComponents();
+        setLocationRelativeTo(null);
         this.controller = new ScheduleController(this);
         start();
     }
