@@ -6,6 +6,7 @@ package view;
 
 import Controller.ScheduleController;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -182,6 +183,52 @@ public class Scheduling extends javax.swing.JFrame
         this.controller.updateClient();
         this.controller.updateService();
         this.controller.updateValue();
+    }
+    public boolean validateFields() 
+    {
+        // Validar ID
+        if (jTextId.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "ID não pode estar vazio", "Erro", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        
+        // Validar cliente selecionado
+        if (jComboBoxClient.getSelectedItem() == null || jComboBoxClient.getSelectedItem().toString().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Selecione um cliente", "Erro", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        
+        // Validar serviço selecionado
+        if (jComboBoxService.getSelectedItem() == null || jComboBoxService.getSelectedItem().toString().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Selecione um serviço", "Erro", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        
+        // Validar valor
+        try {
+            double value = Double.parseDouble(jTextValue.getText());
+            if (value <= 0) {
+                JOptionPane.showMessageDialog(null, "Valor deve ser maior que zero", "Erro", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Valor inválido", "Erro", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        
+        // Validar data (formato básico)
+        if (!jTextDate.getText().matches("\\d{2}/\\d{2}/\\d{4}")) {
+            JOptionPane.showMessageDialog(null, "Data no formato inválido (use DD/MM/AAAA)", "Erro", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        
+        // Validar hora (formato básico)
+        if (!jTextTime.getText().matches("\\d{2}:\\d{2}")) {
+            JOptionPane.showMessageDialog(null, "Hora no formato inválido (use HH:MM)", "Erro", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        
+        return true;
     }
 
     public JTable getjTable() 
