@@ -5,6 +5,7 @@
 package view;
 
 import Controller.ClientsController;
+import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JTable;
 import javax.swing.table.TableColumn;
@@ -24,7 +25,9 @@ public class Clients extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         this.controller = new ClientsController(this);
         this.controller.updateTable();
-
+        JButton sampleButton = new JButton("Editar");
+        int buttonHeight = sampleButton.getPreferredSize().height + 10; // +10 para margem
+        jTable.setRowHeight(buttonHeight);
         // Configurar a coluna Editar
         TableColumn editColumn = jTable.getColumnModel().getColumn(7);
         editColumn.setCellRenderer(new ButtonRenderer("edit"));
