@@ -22,3 +22,5 @@
 /home/david/NetBeansProjects/barbershop/src/main/java/view/Login.java
 /home/david/NetBeansProjects/barbershop/src/main/java/view/PrincipalMenu.java
 /home/david/NetBeansProjects/barbershop/src/main/java/view/Scheduling.java
+/home/david/NetBeansProjects/barbershop/src/main/java/view/components/ButtonEditor.java
+/home/david/NetBeansProjects/barbershop/src/main/java/view/components/ButtonRenderer.java

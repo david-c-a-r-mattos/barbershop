@@ -6,6 +6,7 @@ ModelDAO/ClientDAO.class
 view/Clients$1.class
 Controller/Helpers/ClientsHelper.class
 ModelDAO/Database.class
+view/components/ButtonEditor.class
 model/Client.class
 view/Login$2.class
 view/Login.class
@@ -17,7 +18,9 @@ ModelDAO/ScheduleDAO.class
 Controller/ClientsController.class
 model/Service.class
 view/Scheduling$1.class
+view/components/ButtonEditor$1.class
 view/PrincipalMenu$1.class
+view/components/ButtonRenderer.class
 Controller/LoginController.class
 Controller/Helpers/LoginHelper.class
 model/Person.class
@@ -31,3 +34,4 @@ model/User.class
 view/Clients.class
 Controller/PrincipalMenuController.class
 view/PrincipalMenu.class
+view/Clients$2.class

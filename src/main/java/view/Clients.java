@@ -5,7 +5,11 @@
 package view;
 
 import Controller.ClientsController;
+import javax.swing.JCheckBox;
 import javax.swing.JTable;
+import javax.swing.table.TableColumn;
+import view.components.ButtonEditor;
+import view.components.ButtonRenderer;
 
 /**
  *
@@ -20,6 +24,27 @@ public class Clients extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         this.controller = new ClientsController(this);
         this.controller.updateTable();
+
+        // Configurar a coluna Editar
+        TableColumn editColumn = jTable.getColumnModel().getColumn(7);
+        editColumn.setCellRenderer(new ButtonRenderer("edit"));
+        editColumn.setCellEditor(new ButtonEditor(new JCheckBox(), "edit"));
+
+        // Configurar a coluna Excluir
+        TableColumn deleteColumn = jTable.getColumnModel().getColumn(8);
+        deleteColumn.setCellRenderer(new ButtonRenderer("delete"));
+        deleteColumn.setCellEditor(new ButtonEditor(new JCheckBox(), "delete"));
+
+        // Ajustar largura das colunas
+        editColumn.setPreferredWidth(80);
+        deleteColumn.setPreferredWidth(80);
+
+        // Opcional: remover o cabeçalho das colunas de ação
+        jTable.getTableHeader().setReorderingAllowed(false);
+    }
+    public ClientsController getController() 
+    {
+        return controller;
     }
 
     /**
@@ -39,16 +64,23 @@ public class Clients extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "ID", "Nome", "Endereço", "CEP", "Telefone", "RG", "DT_Nascimento"
-            }
-        ));
+        new Object [][] {
+            {null, null, null, null, null, null, null, "Editar", "Excluir"},
+            {null, null, null, null, null, null, null, "Editar", "Excluir"},
+            {null, null, null, null, null, null, null, "Editar", "Excluir"},
+            {null, null, null, null, null, null, null, "Editar", "Excluir"}
+        },
+        new String [] {
+        "ID", "Nome", "Endereço", "CEP", "Telefone", "RG", "DT_Nascimento", "Editar", "Excluir"
+        }
+    )  {
+    @Override
+    public boolean isCellEditable(int row, int column) 
+    {
+        // Tornar editáveis apenas as colunas de botões
+        return column == 7 || column == 8;
+    }
+    });
         jScrollPane1.setViewportView(jTable);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 50, 610, 270));

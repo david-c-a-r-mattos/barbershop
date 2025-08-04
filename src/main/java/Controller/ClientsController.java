@@ -46,4 +46,18 @@ public class ClientsController
             Logger.getLogger(ScheduleController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    public void editClient(int id) 
+    {
+        // Implemente a lógica de edição aqui
+        System.out.println("Editando cliente com ID: " + id);
+        // Você pode abrir um JDialog com os dados do cliente para edição
+    }
+
+    public void deleteClient(int id) 
+    {
+        // Implemente a lógica de exclusão aqui
+        System.out.println("Excluindo cliente com ID: " + id);
+        // Atualize a tabela após a exclusão
+        updateTable();
+    }
 }
