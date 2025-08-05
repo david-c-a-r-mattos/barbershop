@@ -19,24 +19,26 @@ import view.components.ButtonRenderer;
 public class Clients extends javax.swing.JFrame {
 
     private final ClientsController controller;
+    private final Client view;
     public Clients() 
     {
         initComponents();
         setLocationRelativeTo(null);
-        this.controller = new ClientsController(this);
+        this.view = new Client(null);
+        this.controller = new ClientsController(this, view);
         this.controller.updateTable();
         JButton sampleButton = new JButton("Editar");
-        int buttonHeight = sampleButton.getPreferredSize().height + 10; // +10 para margem
+        int buttonHeight = sampleButton.getPreferredSize().height + 5; // +5 para margem
         jTable.setRowHeight(buttonHeight);
         // Configurar a coluna Editar
         TableColumn editColumn = jTable.getColumnModel().getColumn(7);
         editColumn.setCellRenderer(new ButtonRenderer("edit"));
-        editColumn.setCellEditor(new ButtonEditor(new JCheckBox(), "edit"));
+        editColumn.setCellEditor(new ButtonEditor(new JCheckBox(), "edit", view, this));
 
         // Configurar a coluna Excluir
         TableColumn deleteColumn = jTable.getColumnModel().getColumn(8);
         deleteColumn.setCellRenderer(new ButtonRenderer("delete"));
-        deleteColumn.setCellEditor(new ButtonEditor(new JCheckBox(), "delete"));
+        deleteColumn.setCellEditor(new ButtonEditor(new JCheckBox(), "delete", view, this));
 
         // Ajustar largura das colunas
         editColumn.setPreferredWidth(80);

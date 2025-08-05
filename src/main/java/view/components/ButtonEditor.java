@@ -1,20 +1,23 @@
 package view.components;
 
 
+import Controller.ClientsController;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import view.Clients;
 
-public class ButtonEditor extends DefaultCellEditor {
+public  class ButtonEditor extends DefaultCellEditor {
     protected JButton button;
     private boolean isPushed;
     private int row;
     private JTable table;
-    private String buttonType;
+    private final ClientsController controller;
+    private final view.Clients clientsview;
+    private final view.Client clientview;
+    private final String buttonType;
 
-    public ButtonEditor(JCheckBox checkBox, String buttonType) {
+    public ButtonEditor(JCheckBox checkBox, String buttonType, view.Client clientview, view.Clients clientsview) {
         super(checkBox);
         this.buttonType = buttonType;
         button = new JButton();
@@ -31,16 +34,18 @@ public class ButtonEditor extends DefaultCellEditor {
             button.setText("Excluir"); // Texto fixo para excluir
         }
         
-        button.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                fireEditingStopped();
-            }
+        button.addActionListener((ActionEvent e) -> {
+            fireEditingStopped();
         });
+        this.controller = new ClientsController(clientsview, clientview);
+        this.clientsview = clientsview;
+        this.clientview = clientview;
     }
 
     @Override
     public Component getTableCellEditorComponent(JTable table, Object value,
-            boolean isSelected, int row, int column) {
+            boolean isSelected, int row, int column) 
+    {
         this.table = table;
         this.row = row;
         isPushed = true;
@@ -48,12 +53,17 @@ public class ButtonEditor extends DefaultCellEditor {
     }
 
     @Override
-    public Object getCellEditorValue() {
-        if (isPushed) {
-            if ("edit".equals(buttonType)) {
+    public Object getCellEditorValue() 
+    {
+        if (isPushed) 
+        {
+            if ("edit".equals(buttonType)) 
+            {
                 int id = (int) table.getValueAt(row, 0);
-                JOptionPane.showMessageDialog(button, "Editando cliente ID: " + id, "Editar", JOptionPane.INFORMATION_MESSAGE);
-            } else if ("delete".equals(buttonType)) {
+                controller.editClient(id);
+            } 
+            else if ("delete".equals(buttonType)) 
+            {
                 int id = (int) table.getValueAt(row, 0);
                 int confirm = JOptionPane.showConfirmDialog(button, 
                     "Deseja realmente excluir o cliente ID: " + id + "?", 

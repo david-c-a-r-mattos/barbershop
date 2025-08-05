@@ -62,14 +62,24 @@ public class ClientDAO
         }
         return client;
     }
-
-    // Método para atualizar um cliente
-    public void update(Client client) throws SQLException {
+    public void update(Client client) throws SQLException 
+    {
         String sql = "UPDATE clients SET name = ?, borndt = ?, phone = ?, rg = ?, address = ?, cep = ? WHERE id = ?";
-        
-        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) 
+        {
             stmt.setString(1, client.getName());
-            stmt.setDate(2, (Date) client.getBorndt());
+
+            // Convert java.util.Date → java.sql.Date
+            if (client.getBorndt() != null) 
+            {
+                java.sql.Date sqlDate = new java.sql.Date(client.getBorndt().getTime());
+                stmt.setDate(2, sqlDate);
+            } else 
+            {
+                stmt.setNull(2, java.sql.Types.DATE); // Handle NULL case
+            }
+
             stmt.setString(3, client.getPhone());
             stmt.setString(4, client.getRg());
             stmt.setString(5, client.getAddress());
@@ -80,7 +90,8 @@ public class ClientDAO
     }
 
     // Método para deletar um cliente
-    public void delete(int id) throws SQLException {
+    public void delete(int id) throws SQLException 
+    {
         String sql = "DELETE FROM clients WHERE id = ?";
         
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
@@ -90,7 +101,8 @@ public class ClientDAO
     }
 
     // Método para listar todos os clientes
-    public List<Client> listAll() throws SQLException {
+    public List<Client> listAll() throws SQLException 
+    {
         List<Client> clients = new ArrayList<>();
         String sql = "SELECT * FROM clients";
         
@@ -114,11 +126,13 @@ public class ClientDAO
     }
 
     // Método para buscar clientes por nome (usando LIKE)
-    public List<Client> searchByName(String name) throws SQLException {
+    public List<Client> searchByName(String name) throws SQLException 
+    {
         List<Client> clients = new ArrayList<>();
         String sql = "SELECT * FROM clients WHERE name LIKE ?";
         
-        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) 
+        {
             stmt.setString(1, "%" + name + "%");
             ResultSet rs = stmt.executeQuery();
             
