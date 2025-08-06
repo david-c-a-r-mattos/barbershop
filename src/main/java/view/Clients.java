@@ -61,31 +61,31 @@ public class Clients extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jButton.setBackground(new java.awt.Color(0, 153, 51));
+        jButton.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jButton.setForeground(new java.awt.Color(255, 255, 255));
+        jButton.setText("Novo Cliente");
+        getContentPane().add(jButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 350, -1, -1));
+
         jTable.setModel(new javax.swing.table.DefaultTableModel(
-        new Object [][] {
-            {null, null, null, null, null, null, null, "Editar", "Excluir"},
-            {null, null, null, null, null, null, null, "Editar", "Excluir"},
-            {null, null, null, null, null, null, null, "Editar", "Excluir"},
-            {null, null, null, null, null, null, null, "Editar", "Excluir"}
-        },
-        new String [] {
-        "ID", "Nome", "Endereço", "CEP", "Telefone", "RG", "DT_Nascimento", "Editar", "Excluir"
-        }
-    )  {
-    @Override
-    public boolean isCellEditable(int row, int column) 
-    {
-        // Tornar editáveis apenas as colunas de botões
-        return column == 7 || column == 8;
-    }
-    });
+            new Object [][] {
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "Nome", "Endereço", "CEP", "Telefone", "RG", "DT_Nascimento"
+            }
+        ));
         jScrollPane1.setViewportView(jTable);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 50, 610, 270));
@@ -141,6 +141,7 @@ public class Clients extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable;
