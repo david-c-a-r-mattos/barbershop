@@ -12,6 +12,7 @@ import ModelDAO.ServiceDAO;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -89,9 +90,20 @@ public class ScheduleController
         try 
         {
             Schedule schedule = helper.getModel();
-            new ScheduleDAO(connection).create(schedule);
-            JOptionPane.showMessageDialog(null, "Agendamento realizado com sucesso!");
-        } 
+            ScheduleDAO scheduleDAO = new ScheduleDAO(connection);
+            Schedule verify = scheduleDAO.read(schedule.getId());
+            if(verify != null)
+            {
+
+                JOptionPane.showMessageDialog(null, "Favor digitar um id que não existe! ");                
+            }
+            else
+            {
+                new ScheduleDAO(connection).create(schedule);
+                JOptionPane.showMessageDialog(null, "Agendamento realizado com sucesso!");
+            }
+            
+        }
         catch (SQLException ex) 
         {
             Logger.getLogger(ScheduleController.class.getName()).log(Level.SEVERE, null, ex);

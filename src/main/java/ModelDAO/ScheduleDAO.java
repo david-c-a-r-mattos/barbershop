@@ -101,7 +101,7 @@ public class ScheduleDAO {
 
     public List<Schedule> listAll() throws SQLException {
         List<Schedule> schedules = new ArrayList<>();
-        String sql = "SELECT * FROM schedules";
+        String sql = "SELECT * FROM schedules ORDER BY id";
         
         try (PreparedStatement stmt = connection.prepareStatement(sql);
              ResultSet rs = stmt.executeQuery()) {
