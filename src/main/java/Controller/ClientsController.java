@@ -15,6 +15,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import model.Client;
+import view.Clients;
 
 /**
  *
@@ -62,7 +63,7 @@ public class ClientsController
             Logger.getLogger(ClientsController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    public void saveFields(int id)
+    public void saveFields()
     {
         try 
         {
@@ -86,5 +87,10 @@ public class ClientsController
         System.out.println("Excluindo cliente com ID: " + id);
         // Atualize a tabela após a exclusão
         updateTable();
+    }
+     public void navegateToClient()
+    {
+        view.Client client = clientview;
+        client.setVisible(true);
     }
 }

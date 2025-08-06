@@ -14,11 +14,12 @@ import view.Scheduling;
  */
 public class PrincipalMenuController 
 {
-    private final PrincipalMenu view;
-    public PrincipalMenuController(PrincipalMenu view) 
-    {
+    public PrincipalMenu view;
+
+    public PrincipalMenuController(PrincipalMenu view) {
         this.view = view;
     }
+    
     public void navegateToSchedule()
     {
         Scheduling scheduling = new Scheduling();

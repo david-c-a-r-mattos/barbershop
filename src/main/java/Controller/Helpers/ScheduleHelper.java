@@ -38,7 +38,6 @@ public class ScheduleHelper implements IHelper
                 x.getDate(),
                 x.getObservation()
             });
-            System.out.print(x);
         }
     }
     public Client getClient()

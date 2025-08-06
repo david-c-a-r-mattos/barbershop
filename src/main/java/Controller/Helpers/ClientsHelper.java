@@ -36,7 +36,6 @@ private final Clients view;
                 x.getRg(),
                 x.getBorndt()
             });
-            System.out.print(x);
         }
     }
 

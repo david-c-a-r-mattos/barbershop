@@ -170,9 +170,7 @@ public class Client extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextRgActionPerformed
 
     private void jButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonActionPerformed
-        String idString = this.getjTextId().getText();
-        int id = Integer.parseInt(idString);
-        controller.saveFields(id);
+        controller.saveFields();
     }//GEN-LAST:event_jButtonActionPerformed
 
     /**

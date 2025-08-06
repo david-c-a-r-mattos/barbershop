@@ -73,17 +73,22 @@ public class Clients extends javax.swing.JFrame {
         jButton.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
         jButton.setForeground(new java.awt.Color(255, 255, 255));
         jButton.setText("Novo Cliente");
+        jButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 350, -1, -1));
 
         jTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Nome", "Endereço", "CEP", "Telefone", "RG", "DT_Nascimento"
+                "ID", "Nome", "Endereço", "CEP", "Telefone", "RG", "DT_Nascimento", "Editar", "Excluir"
             }
         ));
         jScrollPane1.setViewportView(jTable);
@@ -95,6 +100,10 @@ public class Clients extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonActionPerformed
+        this.controller.navegateToClient();
+    }//GEN-LAST:event_jButtonActionPerformed
 
     /**
      * @param args the command line arguments
