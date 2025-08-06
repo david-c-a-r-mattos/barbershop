@@ -37,7 +37,6 @@ public class PrincipalMenu extends javax.swing.JFrame
         jMenuItemService = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -77,9 +76,6 @@ public class PrincipalMenu extends javax.swing.JFrame
         jMenu3.add(jMenuItem3);
 
         jMenuBar1.add(jMenu3);
-
-        jMenu4.setText("Relatório");
-        jMenuBar1.add(jMenu4);
 
         setJMenuBar(jMenuBar1);
 
@@ -150,7 +146,6 @@ public class PrincipalMenu extends javax.swing.JFrame
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItemClient;
