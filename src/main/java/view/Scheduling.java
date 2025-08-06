@@ -106,7 +106,7 @@ public class Scheduling extends javax.swing.JFrame
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 180, 250, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 170, 250, -1));
 
         jTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -128,7 +128,7 @@ public class Scheduling extends javax.swing.JFrame
         jTextAreaObservation.setRows(5);
         jScrollPane2.setViewportView(jTextAreaObservation);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 30, 250, 140));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 30, 250, 120));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/schedule_painel.png"))); // NOI18N
         jLabel2.setText("jLabel2");
