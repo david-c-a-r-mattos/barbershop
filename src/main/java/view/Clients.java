@@ -109,7 +109,8 @@ public class Clients extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonActionPerformed
-        createclientcontroller.navegateToCreateClient();
+
+        createclientcontroller.navegateToCreateClient(createclientview);
     }//GEN-LAST:event_jButtonActionPerformed
 
     /**
