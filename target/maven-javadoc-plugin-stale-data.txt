@@ -1,0 +1,62 @@
+-J-Duser.language=
+-J-Duser.country=
+@options
+@packages
+-classpath
+'/home/david/.m2/repository/org/postgresql/postgresql/42.6.0/postgresql-42.6.0.jar:/home/david/.m2/repository/org/checkerframework/checker-qual/3.31.0/checker-qual-3.31.0.jar:/home/david/.m2/repository/org/slf4j/slf4j-api/2.0.7/slf4j-api-2.0.7.jar:/home/david/.m2/repository/ch/qos/logback/logback-classic/1.4.8/logback-classic-1.4.8.jar:/home/david/.m2/repository/ch/qos/logback/logback-core/1.4.8/logback-core-1.4.8.jar:/home/david/.m2/repository/org/jline/jline/3.23.0/jline-3.23.0.jar:/home/david/.m2/repository/com/google/guava/guava/33.2.1-jre/guava-33.2.1-jre.jar:/home/david/.m2/repository/com/google/guava/failureaccess/1.0.2/failureaccess-1.0.2.jar:/home/david/.m2/repository/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar:/home/david/.m2/repository/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar:/home/david/.m2/repository/com/google/errorprone/error_prone_annotations/2.26.1/error_prone_annotations-2.26.1.jar:/home/david/.m2/repository/com/google/j2objc/j2objc-annotations/3.0.0/j2objc-annotations-3.0.0.jar:/home/david/.m2/repository/org/netbeans/org-netbeans-lib-awtextra/8.2/org-netbeans-lib-awtextra-8.2.jar'
+-encoding
+'UTF-8'
+-protected
+-sourcepath
+'/home/david/NetBeansProjects/barbershop/src/main/java'
+-author
+-bottom
+'Copyright &#169; 2025. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'/home/david/NetBeansProjects/barbershop/target/reports/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'Barber Shop 1.0.0 API'
+-use
+-version
+-windowtitle
+'Barber Shop 1.0.0 API'
+ModelDAO
+view
+view.components
+com.mycompany.barbershop
+Controller
+Controller.Helpers
+model
+/home/david/.m2/repository/org/postgresql/postgresql/42.6.0/postgresql-42.6.0.jar = 1679090828000
+/home/david/.m2/repository/org/checkerframework/checker-qual/3.31.0/checker-qual-3.31.0.jar = 1676665530000
+/home/david/.m2/repository/org/slf4j/slf4j-api/2.0.7/slf4j-api-2.0.7.jar = 1679081818000
+/home/david/.m2/repository/ch/qos/logback/logback-classic/1.4.8/logback-classic-1.4.8.jar = 1686643804000
+/home/david/.m2/repository/ch/qos/logback/logback-core/1.4.8/logback-core-1.4.8.jar = 1686643766000
+/home/david/.m2/repository/org/jline/jline/3.23.0/jline-3.23.0.jar = 1754575532270
+/home/david/.m2/repository/com/google/guava/guava/33.2.1-jre/guava-33.2.1-jre.jar = 1717178803000
+/home/david/.m2/repository/com/google/guava/failureaccess/1.0.2/failureaccess-1.0.2.jar = 1697548569000
+/home/david/.m2/repository/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar = 1536694843000
+/home/david/.m2/repository/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar = 1490936147000
+/home/david/.m2/repository/com/google/errorprone/error_prone_annotations/2.26.1/error_prone_annotations-2.26.1.jar = 1710269323000
+/home/david/.m2/repository/com/google/j2objc/j2objc-annotations/3.0.0/j2objc-annotations-3.0.0.jar = 1710004379000
+/home/david/.m2/repository/org/netbeans/org-netbeans-lib-awtextra/8.2/org-netbeans-lib-awtextra-8.2.jar = 1753441032544
+/home/david/NetBeansProjects/barbershop/src/main/java = 1754420279502
+/home/david/NetBeansProjects/barbershop/target/reports/apidocs/member-search-index.js = 1754584239626
+/home/david/NetBeansProjects/barbershop/target/reports/apidocs/index.html = 1754584239572
+/home/david/NetBeansProjects/barbershop/target/reports/apidocs/package-search-index.js = 1754584239625
+/home/david/NetBeansProjects/barbershop/target/reports/apidocs/help-doc.html = 1754584239701
+/home/david/NetBeansProjects/barbershop/target/reports/apidocs/type-search-index.js = 1754584239626
+/home/david/NetBeansProjects/barbershop/target/reports/apidocs/index-all.html = 1754584239691
+/home/david/NetBeansProjects/barbershop/target/reports/apidocs/serialized-form.html = 1754584239357
+/home/david/NetBeansProjects/barbershop/target/reports/apidocs/allpackages-index.html = 1754584239623
+/home/david/NetBeansProjects/barbershop/target/reports/apidocs/allclasses-index.html = 1754584239620
+/home/david/NetBeansProjects/barbershop/target/reports/apidocs/overview-tree.html = 1754584239567
+/home/david/NetBeansProjects/barbershop/target/reports/apidocs/tag-search-index.js = 1754584239627
+/home/david/NetBeansProjects/barbershop/target/reports/apidocs/element-list = 1754584239189
+/home/david/NetBeansProjects/barbershop/target/reports/apidocs/search.html = 1754584239694
+/home/david/NetBeansProjects/barbershop/target/reports/apidocs/overview-summary.html = 1754584239696
+/home/david/NetBeansProjects/barbershop/target/reports/apidocs/module-search-index.js = 1754584239624

@@ -63,11 +63,7 @@ public  class ButtonEditor extends DefaultCellEditor {
             if ("edit".equals(buttonType)) 
             {
                 int id = (int) table.getValueAt(row, 0);
-                try {
-                    controller.editClient(id);
-                } catch (SQLException ex) {
-                    Logger.getLogger(ButtonEditor.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                controller.editClient(id);
             } 
             else if ("delete".equals(buttonType)) 
             {
@@ -77,11 +73,7 @@ public  class ButtonEditor extends DefaultCellEditor {
                     "Deseja realmente excluir o cliente ID: " + id + "?", 
                     "Confirmar Exclusão", JOptionPane.YES_NO_OPTION);
                 if (confirm == JOptionPane.YES_OPTION) {
-                    try {
-                        ((Clients) SwingUtilities.getWindowAncestor(table)).getController().deleteClient(id);
-                    } catch (SQLException ex) {
-                        Logger.getLogger(ButtonEditor.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                    ((Clients) SwingUtilities.getWindowAncestor(table)).getController().deleteClient(id);
                 }
             }
         }

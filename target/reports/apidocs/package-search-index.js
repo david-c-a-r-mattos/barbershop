@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.mycompany.barbershop"},{"l":"Controller"},{"l":"Controller.Helpers"},{"l":"model"},{"l":"ModelDAO"},{"l":"view"},{"l":"view.components"}];updateSearchResults();
