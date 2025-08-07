@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import view.Clients;
 import view.CreateClient;
 
@@ -51,6 +52,7 @@ public class CreateClientController
         {
             Logger.getLogger(CreateClientController.class.getName()).log(Level.SEVERE, null, ex);
         }
+        JOptionPane.showMessageDialog(null, "Cliente criado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
         view.setVisible(false);
         clientscontroller.updateTable();
     }
