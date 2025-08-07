@@ -14,6 +14,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Date;
+import java.sql.Statement;
 
 public class ClientDAO 
 {
@@ -24,20 +25,46 @@ public class ClientDAO
     }
 
     // Método para inserir um novo cliente no banco de dados
-    public void create(Client client) throws SQLException {
-        String sql = "INSERT INTO clients (id, name, borndt, phone, rg, address, cep) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    /*public void create(Client client) throws SQLException {
+        String sql = "INSERT INTO clients (cep, name, borndt, phone, rg, address) VALUES (?, ?, ?, ?, ?, ?)";
         
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-            stmt.setInt(1, client.getId());
-            stmt.setString(2, client.getName());
-            stmt.setDate(3, (Date) client.getBorndt());
-            stmt.setString(4, client.getPhone());
-            stmt.setString(5, client.getRg());
-            stmt.setString(6, client.getAddress());
-            stmt.setString(7, client.getCep());
+            //stmt.setInt(1, client.getId());
+            stmt.setString(1, client.getName());
+            stmt.setDate(2, (Date) client.getBorndt());
+            stmt.setString(3, client.getPhone());
+            stmt.setString(4, client.getRg());
+            stmt.setString(5, client.getAddress());
+            stmt.setString(6, client.getCep());
             stmt.execute();
         }
+    }*/
+    public void create(Client client) throws SQLException 
+    {
+        // REMOVA o ID da query de inserção
+        String sql = "INSERT INTO clients (name, borndt, phone, rg, address, cep) VALUES (?, ?, ?, ?, ?, ?)";
+
+        try (PreparedStatement stmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+            // Índices agora começam em 1 (sem o ID)
+            stmt.setString(1, client.getName());
+            stmt.setDate(2, client.getBorndt() != null ? 
+                        new java.sql.Date(client.getBorndt().getTime()) : null);
+            stmt.setString(3, client.getPhone());
+            stmt.setString(4, client.getRg());
+            stmt.setString(5, client.getAddress());
+            stmt.setString(6, client.getCep());
+
+            stmt.executeUpdate();
+
+            // Obter o ID gerado automaticamente
+            try (ResultSet rs = stmt.getGeneratedKeys()) {
+                if (rs.next()) {
+                    client.setId(rs.getInt(1)); // Atualiza o objeto com o novo ID
+                }
+            }
+        }
     }
+
 
     // Método para buscar um cliente pelo ID
     public Client read(int id) throws SQLException {
@@ -79,7 +106,6 @@ public class ClientDAO
             {
                 stmt.setNull(2, java.sql.Types.DATE); // Handle NULL case
             }
-
             stmt.setString(3, client.getPhone());
             stmt.setString(4, client.getRg());
             stmt.setString(5, client.getAddress());
@@ -104,7 +130,7 @@ public class ClientDAO
     public List<Client> listAll() throws SQLException 
     {
         List<Client> clients = new ArrayList<>();
-        String sql = "SELECT * FROM clients";
+        String sql = "SELECT * FROM clients ORDER BY id";
         
         try (PreparedStatement stmt = connection.prepareStatement(sql);
              ResultSet rs = stmt.executeQuery()) {

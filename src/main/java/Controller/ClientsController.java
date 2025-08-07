@@ -4,7 +4,6 @@
  */
 package Controller;
 
-import Controller.Helpers.ClientHelper;
 import Controller.Helpers.ClientsHelper;
 import ModelDAO.ClientDAO;
 import ModelDAO.Database;
@@ -13,9 +12,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 import model.Client;
-import view.Clients;
 
 /**
  *
@@ -23,17 +20,13 @@ import view.Clients;
  */
 public class ClientsController 
 {
-    private view.Clients clientsview;
-    private final ClientsHelper clientshelper;
-    private final view.Client clientview;
-    private final ClientHelper clienthelper;
+    private view.Clients view;
+    private final ClientsHelper helper;
     private final Connection connection = Database.getConnection();
-    public ClientsController(view.Clients view, view.Client clientview) 
+    public ClientsController(view.Clients view) 
     {
-        this.clientsview = view;
-        this.clientshelper = new ClientsHelper(view);
-        this.clientview = clientview;
-        this.clienthelper = new ClientHelper(view, clientview);
+        this.view = view;
+        this.helper = new ClientsHelper(view);
     }
     public void updateTable()
     {
@@ -42,55 +35,11 @@ public class ClientsController
         try 
         {
             List<Client> arrayList = clientDAO.listAll();
-            clientshelper.fillTable(arrayList);
+            helper.fillTable(arrayList);
         } 
         catch (SQLException ex) 
         {
             Logger.getLogger(ScheduleController.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-    public void editClient(int id)
-    {
-        try 
-        {
-            ClientDAO clientDAO = new ClientDAO(connection);
-            Client client = clientDAO.read(id);
-            clienthelper.fillFields(client, clientsview);
-            
-        } 
-        catch (SQLException ex) 
-        {
-            Logger.getLogger(ClientsController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    public void saveFields()
-    {
-        try 
-        {
-            ClientDAO clientDAO = new ClientDAO(connection);
-            Client client = clienthelper.getModel();
-            clientDAO.update(client);
-            clientsview = new view.Clients();
-            JOptionPane.showMessageDialog(null, "Cliente salvo com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
-            clientview.setVisible(false);
-            clientsview.setVisible(true);
-        } 
-        catch (SQLException ex) 
-        {
-            Logger.getLogger(ClientsController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    public void deleteClient(int id) 
-    {
-        // Implemente a lógica de exclusão aqui
-        System.out.println("Excluindo cliente com ID: " + id);
-        // Atualize a tabela após a exclusão
-        updateTable();
-    }
-     public void navegateToClient()
-    {
-        view.Client client = clientview;
-        client.setVisible(true);
-    }
+    }   
 }

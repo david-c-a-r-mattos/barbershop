@@ -67,7 +67,7 @@ public class ScheduleController
         try 
         {
             List<Service> arrayList = serviceDAO.listAll();
-            helper.fillService(arrayList);
+            helper.fillServices(arrayList);
         } 
         catch (SQLException ex) 
         {
@@ -90,17 +90,8 @@ public class ScheduleController
         {
             Schedule schedule = helper.getModel();
             ScheduleDAO scheduleDAO = new ScheduleDAO(connection);
-            Schedule verify = scheduleDAO.read(schedule.getId());
-            if(verify != null)
-            {
-
-                JOptionPane.showMessageDialog(null, "Favor digitar um id que não existe! ");                
-            }
-            else
-            {
-                new ScheduleDAO(connection).create(schedule);
-                JOptionPane.showMessageDialog(null, "Agendamento realizado com sucesso!");
-            }
+            new ScheduleDAO(connection).create(schedule);
+            JOptionPane.showMessageDialog(null, "Agendamento realizado com sucesso!");
             
         }
         catch (SQLException ex) 
@@ -113,13 +104,6 @@ public class ScheduleController
     }
     public boolean validateFields() 
     {
-        
-        String id = view.getjTextId().getText();
-        if(id == null || id.trim().isEmpty())
-        {
-            JOptionPane.showMessageDialog(null, "ID não pode estar vazio", "Erro", JOptionPane.ERROR_MESSAGE);
-            return false;
-        }
         // Validar valor
         String valorText = view.getjTextValue().getText().trim();
         if (valorText.isEmpty()) {

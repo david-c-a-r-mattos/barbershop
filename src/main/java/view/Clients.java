@@ -4,7 +4,9 @@
  */
 package view;
 
+import Controller.ClientController;
 import Controller.ClientsController;
+import Controller.CreateClientController;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JTable;
@@ -18,14 +20,19 @@ import view.components.ButtonRenderer;
  */
 public class Clients extends javax.swing.JFrame {
 
+    private final CreateClientController createclientcontroller;
     private final ClientsController controller;
-    private final Client view;
+    private final ClientController clientcontroller;
+    private final view.CreateClient createclientview;
     public Clients() 
     {
         initComponents();
         setLocationRelativeTo(null);
-        this.view = new Client(null);
-        this.controller = new ClientsController(this, view);
+        view.Client clientview = new Client(this);
+        this.clientcontroller = new ClientController(clientview, this);
+        this.createclientview = new view.CreateClient(this);
+        this.controller = new ClientsController(this);
+        this.createclientcontroller = new CreateClientController(createclientview, this);
         this.controller.updateTable();
         JButton sampleButton = new JButton("Editar");
         int buttonHeight = sampleButton.getPreferredSize().height + 5; // +5 para margem
@@ -33,12 +40,12 @@ public class Clients extends javax.swing.JFrame {
         // Configurar a coluna Editar
         TableColumn editColumn = jTable.getColumnModel().getColumn(7);
         editColumn.setCellRenderer(new ButtonRenderer("edit"));
-        editColumn.setCellEditor(new ButtonEditor(new JCheckBox(), "edit", view, this));
+        editColumn.setCellEditor(new ButtonEditor(new JCheckBox(), "edit", this, clientview));
 
         // Configurar a coluna Excluir
         TableColumn deleteColumn = jTable.getColumnModel().getColumn(8);
         deleteColumn.setCellRenderer(new ButtonRenderer("delete"));
-        deleteColumn.setCellEditor(new ButtonEditor(new JCheckBox(), "delete", view, this));
+        deleteColumn.setCellEditor(new ButtonEditor(new JCheckBox(), "delete", this, clientview));
 
         // Ajustar largura das colunas
         editColumn.setPreferredWidth(80);
@@ -47,9 +54,9 @@ public class Clients extends javax.swing.JFrame {
         // Opcional: remover o cabeçalho das colunas de ação
         jTable.getTableHeader().setReorderingAllowed(false);
     }
-    public ClientsController getController() 
+    public ClientController getController() 
     {
-        return controller;
+        return clientcontroller;
     }
 
     /**
@@ -102,7 +109,7 @@ public class Clients extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonActionPerformed
-        this.controller.navegateToClient();
+        createclientcontroller.navegateToCreateClient();
     }//GEN-LAST:event_jButtonActionPerformed
 
     /**

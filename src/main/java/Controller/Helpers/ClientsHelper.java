@@ -15,7 +15,7 @@ import view.Clients;
  */
 public class ClientsHelper 
 {
-private final Clients view;
+    private final Clients view;
 
     public ClientsHelper(Clients view) {
         this.view = view;

@@ -4,6 +4,8 @@
  */
 package Controller.Helpers;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import view.Client;
 import view.Clients;
 /**
@@ -25,7 +27,10 @@ public class ClientHelper
         view.getjTextName().setText(client.getName());
         view.getjTextCep().setText(client.getCep());
         view.getjTextPhone().setText(client.getPhone());
-        view.getjTextBorndt().setText(client.getBorndt()+"");
+        Date utilDate = client.getBorndt();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        String formatDate = sdf.format(utilDate);
+        view.getjTextBorndt().setText(formatDate);
         view.getjTextRg().setText(client.getRg());
         view.getjTextAddress().setText(client.getAddress());
         int idInt = client.getId();
@@ -35,6 +40,7 @@ public class ClientHelper
         view.setVisible(true);
     }
 
+  
     public model.Client getModel() 
     {
         String name = view.getjTextName().getText();
@@ -45,7 +51,6 @@ public class ClientHelper
         String rg = view.getjTextRg().getText();
         String idString = view.getjTextId().getText();
         int id = Integer.parseInt(idString);
-        model.Client client = new model.Client(cep, id, name, borndt, phone, rg, address);
-        return client;
+        return new model.Client(cep, id, name, borndt, phone, rg, address);
     }
 }

@@ -5,7 +5,9 @@
 package Controller.Helpers;
 
 import java.util.List;
+import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
 import javax.swing.table.DefaultTableModel;
 import model.Client;
 import model.Schedule;
@@ -48,29 +50,27 @@ public class ScheduleHelper implements IHelper
     {
         return (Service) view.getjComboBoxService().getSelectedItem();
     }
-    public void fillClients(List<Client> arrayList) 
+    public void fillClients(List<Client> clients) 
     {
-        DefaultComboBoxModel comboBoxModel = (DefaultComboBoxModel) view.getjComboBoxClient().getModel();
-        for(Client x : arrayList)
-        {
-            comboBoxModel.addElement(x);
+        DefaultComboBoxModel model = (DefaultComboBoxModel) view.getjComboBoxClient().getModel();
+        // 3. Popular o modelo
+        for (Client client : clients) {
+             model.addElement(client);
         }
     }
 
-    public void fillService(List<Service> arrayList) 
+    public void fillServices(List<Service> services) 
     {
-        DefaultComboBoxModel comboBoxModel = (DefaultComboBoxModel) view.getjComboBoxService().getModel();
-        for(Service x : arrayList)
-        {
-            comboBoxModel.addElement(x);
+        DefaultComboBoxModel model = (DefaultComboBoxModel) view.getjComboBoxService().getModel();
+        // 3. Popular o modelo
+        for (Service service : services) {
+             model.addElement(service);
         }
     }
 
     @Override
     public Schedule getModel() 
     {
-        String idString = view.getjTextId().getText();
-        int id = Integer.parseInt(idString);
         Client client = getClient();
         Service service = getService();
         String valueString = view.getjTextValue().getText();
@@ -79,14 +79,13 @@ public class ScheduleHelper implements IHelper
         String time = view.getjTextTime().getText();
         String dateTime = date+" "+time;
         String observation = view.getjTextAreaObservation().getText();
-        Schedule schedule = new Schedule(id, client, service, value, dateTime, observation);
+        Schedule schedule = new Schedule(client, service, value, dateTime, observation);
         return schedule;
     }
 
     @Override
     public void clearScreen() 
     {
-        view.getjTextId().setText("0");
         view.getjTextDate().setText("");
         view.getjTextTime().setText("");
         view.getjTextAreaObservation().setText("");

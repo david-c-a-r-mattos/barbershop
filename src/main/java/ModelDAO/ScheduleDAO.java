@@ -13,6 +13,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -36,16 +37,24 @@ public class ScheduleDAO {
     }
 
     public void create(Schedule schedule) throws SQLException {
-        String sql = "INSERT INTO schedules (id, client_id, service_id, value, date, observation) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO schedules (client_id, service_id, value, date, observation) VALUES (?, ?, ?, ?, ?)";
         
-        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-            stmt.setInt(1, schedule.getId());
-            stmt.setInt(2, schedule.getClient().getId());
-            stmt.setInt(3, schedule.getService().getId());
-            stmt.setFloat(4, schedule.getValue());
-            stmt.setTimestamp(5, new Timestamp(schedule.getDate().getTime()));
-            stmt.setString(6, schedule.getObservation());
-            stmt.execute();
+        try (PreparedStatement stmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) 
+        {
+            stmt.setInt(1, schedule.getClient().getId());
+            stmt.setInt(2, schedule.getService().getId());
+            stmt.setFloat(3, schedule.getValue());
+            stmt.setTimestamp(4, new Timestamp(schedule.getDate().getTime()));
+            stmt.setString(5, schedule.getObservation());
+            stmt.executeUpdate();
+        
+            try (ResultSet rs = stmt.getGeneratedKeys()) 
+            {
+                if (rs.next()) 
+                {
+                    schedule.setId(rs.getInt(1)); // Atualiza o objeto com o novo ID
+                }
+            }
         }
     }
 

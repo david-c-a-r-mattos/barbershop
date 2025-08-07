@@ -1,10 +1,13 @@
 package view.components;
 
 
-import Controller.ClientsController;
+import Controller.ClientController;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import view.Clients;
 
 public  class ButtonEditor extends DefaultCellEditor {
@@ -12,12 +15,12 @@ public  class ButtonEditor extends DefaultCellEditor {
     private boolean isPushed;
     private int row;
     private JTable table;
-    private final ClientsController controller;
+    private final ClientController controller;
     private final view.Clients clientsview;
     private final view.Client clientview;
     private final String buttonType;
 
-    public ButtonEditor(JCheckBox checkBox, String buttonType, view.Client clientview, view.Clients clientsview) {
+    public ButtonEditor(JCheckBox checkBox, String buttonType, view.Clients clientsview, view.Client clientview) {
         super(checkBox);
         this.buttonType = buttonType;
         button = new JButton();
@@ -37,9 +40,9 @@ public  class ButtonEditor extends DefaultCellEditor {
         button.addActionListener((ActionEvent e) -> {
             fireEditingStopped();
         });
-        this.controller = new ClientsController(clientsview, clientview);
-        this.clientsview = clientsview;
         this.clientview = clientview;
+        this.clientsview = clientsview;
+        this.controller = new ClientController(clientview, clientsview);
     }
 
     @Override
@@ -60,7 +63,11 @@ public  class ButtonEditor extends DefaultCellEditor {
             if ("edit".equals(buttonType)) 
             {
                 int id = (int) table.getValueAt(row, 0);
-                controller.editClient(id);
+                try {
+                    controller.editClient(id);
+                } catch (SQLException ex) {
+                    Logger.getLogger(ButtonEditor.class.getName()).log(Level.SEVERE, null, ex);
+                }
             } 
             else if ("delete".equals(buttonType)) 
             {

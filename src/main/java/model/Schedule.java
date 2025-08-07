@@ -36,6 +36,21 @@ public class Schedule {
            Logger.getLogger(Schedule.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    public Schedule(Client client, Service service, float value, String date, String observation) 
+    {
+        this.client = client;
+        this.service = service;
+        this.value = value;
+        try
+        {
+            this.date = new SimpleDateFormat("dd/mm/yyyy HH:mm").parse(date);
+        }
+        catch(ParseException ex)
+        {
+           Logger.getLogger(Schedule.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        this.observation = observation;
+    }
 
     public Schedule(int id, Client client, Service service, float value, String date, String observation) 
     {

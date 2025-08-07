@@ -28,6 +28,40 @@ abstract public class Person
         this.id = id;
         this.name = name;
     }
+    public Person(String name, String borndt, String phone, String rg, String address) 
+    {
+        this.name = name;
+
+        if (borndt != null && !borndt.trim().isEmpty()) 
+        {
+            try 
+            {
+                // Primeiro tenta o formato ISO (yyyy-MM-dd)
+                this.borndt = new SimpleDateFormat("yyyy-MM-dd").parse(borndt);
+            } 
+                catch (ParseException e1) 
+                {
+                    try 
+                    {
+                        // Se falhar, tenta o formato brasileiro (dd/MM/yyyy)
+                        this.borndt = new SimpleDateFormat("dd/MM/yyyy").parse(borndt);
+                    } 
+                    catch (ParseException e2) 
+                    {
+                        Logger.getLogger(Person.class.getName()).log(Level.SEVERE, 
+                            "Formato de data inválido: " + borndt + ". Use yyyy-MM-dd ou dd/MM/yyyy", e2);
+                        this.borndt = null;
+                    }
+                }
+        } 
+        else 
+        {
+            this.borndt = null;
+        }
+        this.phone = phone;
+        this.rg = rg;
+        this.address = address;
+    }
 
     public Person(int id, String name, String borndt, String phone, String rg, String address) 
     {

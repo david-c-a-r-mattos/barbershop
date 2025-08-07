@@ -27,6 +27,11 @@ public class Client extends Person
         this.cep = cep;
     }
 
+    public Client(String cep, String name, String borndt, String phone, String rg, String address) {
+        super(name, borndt, phone, rg, address);
+        this.cep = cep;
+    }
+
     public String getCep() {
         return cep;
     }

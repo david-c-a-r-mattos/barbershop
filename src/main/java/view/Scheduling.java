@@ -37,7 +37,6 @@ public class Scheduling extends javax.swing.JFrame
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jComboBoxService = new javax.swing.JComboBox<>();
@@ -49,7 +48,6 @@ public class Scheduling extends javax.swing.JFrame
         jTextValue = new javax.swing.JTextField();
         jTextDate = new javax.swing.JTextField();
         jTextTime = new javax.swing.JTextField();
-        jTextId = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextAreaObservation = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
@@ -61,37 +59,33 @@ public class Scheduling extends javax.swing.JFrame
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Serviço");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 70, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 70, -1));
 
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Valor");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, -1));
 
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Hora");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, -1, -1));
 
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("ID");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, -1, -1));
-
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel7.setText("Cliente");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 70, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 70, -1));
 
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Data");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, -1, -1));
 
         jComboBoxService.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jComboBoxServiceItemStateChanged(evt);
             }
         });
-        getContentPane().add(jComboBoxService, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 170, -1));
+        getContentPane().add(jComboBoxService, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 170, 20));
 
-        getContentPane().add(jComboBoxClient, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 170, -1));
+        getContentPane().add(jComboBoxClient, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 170, 20));
 
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Observação:");
@@ -106,7 +100,7 @@ public class Scheduling extends javax.swing.JFrame
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 170, 250, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 180, 250, -1));
 
         jTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -119,16 +113,21 @@ public class Scheduling extends javax.swing.JFrame
         jScrollPane1.setViewportView(jTable);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 580, 140));
-        getContentPane().add(jTextValue, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 170, -1));
-        getContentPane().add(jTextDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, 170, -1));
+        getContentPane().add(jTextValue, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, 170, -1));
+        getContentPane().add(jTextDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, 170, -1));
+
+        jTextTime.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextTimeActionPerformed(evt);
+            }
+        });
         getContentPane().add(jTextTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 180, 170, -1));
-        getContentPane().add(jTextId, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 170, -1));
 
         jTextAreaObservation.setColumns(20);
         jTextAreaObservation.setRows(5);
         jScrollPane2.setViewportView(jTextAreaObservation);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 30, 250, 120));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 30, 250, 140));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/schedule_painel.png"))); // NOI18N
         jLabel2.setText("jLabel2");
@@ -152,6 +151,10 @@ public class Scheduling extends javax.swing.JFrame
         this.controller.updateValue();
     }//GEN-LAST:event_jComboBoxServiceItemStateChanged
 
+    private void jTextTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextTimeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextTimeActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -162,7 +165,6 @@ public class Scheduling extends javax.swing.JFrame
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -171,7 +173,6 @@ public class Scheduling extends javax.swing.JFrame
     private javax.swing.JTable jTable;
     private javax.swing.JTextArea jTextAreaObservation;
     private javax.swing.JTextField jTextDate;
-    private javax.swing.JTextField jTextId;
     private javax.swing.JTextField jTextTime;
     private javax.swing.JTextField jTextValue;
     // End of variables declaration//GEN-END:variables
@@ -185,14 +186,7 @@ public class Scheduling extends javax.swing.JFrame
         this.controller.updateValue();
     }
     public boolean validateFields() 
-    {
-        // Validar ID
-        if (jTextId.getText().trim().isEmpty()) 
-        {
-            JOptionPane.showMessageDialog(null, "ID não pode estar vazio", "Erro", JOptionPane.ERROR_MESSAGE);
-            return false;
-        }
-        
+    {   
         // Validar cliente selecionado
         if (jComboBoxClient.getSelectedItem() == null || jComboBoxClient.getSelectedItem().toString().isEmpty()) 
         {
@@ -249,16 +243,17 @@ public class Scheduling extends javax.swing.JFrame
         this.jTable = jTable1;
     }
 
-    public JComboBox<String> getjComboBoxClient() {
-        return jComboBoxClient;
+    public JComboBox<String> getjComboBoxService() 
+    {
+        return this.jComboBoxService;
+    }
+    public JComboBox<String> getjComboBoxClient() 
+    {
+        return this.jComboBoxClient;
     }
 
     public void setjComboBoxClient(JComboBox<String> jComboBoxClient) {
         this.jComboBoxClient = jComboBoxClient;
-    }
-
-    public JComboBox<String> getjComboBoxService() {
-        return jComboBoxService;
     }
 
     public void setjComboBoxService(JComboBox<String> jComboBoxService) {
@@ -281,13 +276,7 @@ public class Scheduling extends javax.swing.JFrame
         this.jTextDate = jTextDate;
     }
 
-    public JTextField getjTextId() {
-        return jTextId;
-    }
-
-    public void setjTextId(JTextField jTextId) {
-        this.jTextId = jTextId;
-    }
+    
 
     public JTextField getjTextTime() {
         return jTextTime;

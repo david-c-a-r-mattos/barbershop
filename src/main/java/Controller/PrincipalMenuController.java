@@ -4,7 +4,6 @@
  */
 package Controller;
 
-import view.Clients;
 import view.PrincipalMenu;
 import view.Scheduling;
 
@@ -28,7 +27,7 @@ public class PrincipalMenuController
 
     public void navegateToClients() 
     {
-        Clients clients = new Clients();
+        view.Clients clients = new view.Clients();
         clients.setVisible(true);
     }
 }
