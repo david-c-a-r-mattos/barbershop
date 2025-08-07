@@ -30,7 +30,6 @@ view/Client$1.class
 view/Clients.class
 Controller/PrincipalMenuController.class
 view/PrincipalMenu.class
-Controller/clienthelper.class
 view/Clients$2.class
 view/Client$7.class
 view/CreateClient$7.class

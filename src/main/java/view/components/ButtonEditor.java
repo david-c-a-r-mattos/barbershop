@@ -72,11 +72,16 @@ public  class ButtonEditor extends DefaultCellEditor {
             else if ("delete".equals(buttonType)) 
             {
                 int id = (int) table.getValueAt(row, 0);
+                
                 int confirm = JOptionPane.showConfirmDialog(button, 
                     "Deseja realmente excluir o cliente ID: " + id + "?", 
                     "Confirmar Exclusão", JOptionPane.YES_NO_OPTION);
                 if (confirm == JOptionPane.YES_OPTION) {
-                    ((Clients) SwingUtilities.getWindowAncestor(table)).getController().deleteClient(id);
+                    try {
+                        ((Clients) SwingUtilities.getWindowAncestor(table)).getController().deleteClient(id);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(ButtonEditor.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
             }
         }

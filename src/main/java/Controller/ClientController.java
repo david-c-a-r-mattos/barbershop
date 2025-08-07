@@ -7,6 +7,7 @@ package Controller;
 import Controller.Helpers.ClientHelper;
 import ModelDAO.ClientDAO;
 import ModelDAO.Database;
+import ModelDAO.ScheduleDAO;
 import ch.qos.logback.classic.pattern.DateConverter;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -65,8 +66,12 @@ public class ClientController
         Client client = clientDAO.read(id);
         helper.fillFields(client, clientsview);
     }
-    public void deleteClient(int id) 
+    public void deleteClient(int id) throws SQLException 
     {
-        
+        ScheduleDAO scheduleDAO = new ScheduleDAO(connection);
+        scheduleDAO.deleteForIdClient(id);
+        ClientDAO clientDAO = new ClientDAO(connection);
+        clientDAO.delete(id);
+        clientscontroller.updateTable();
     }
 }

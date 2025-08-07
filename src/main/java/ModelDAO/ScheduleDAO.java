@@ -107,6 +107,14 @@ public class ScheduleDAO {
             stmt.execute();
         }
     }
+    public void deleteForIdClient(int id) throws SQLException {
+        String sql = "DELETE FROM schedules WHERE client_id = ?";
+        
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setInt(1, id);
+            stmt.execute();
+        }
+    }
 
     public List<Schedule> listAll() throws SQLException {
         List<Schedule> schedules = new ArrayList<>();
