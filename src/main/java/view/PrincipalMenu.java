@@ -65,7 +65,7 @@ public class PrincipalMenu extends javax.swing.JFrame
 
         jMenuBar1.add(jMenu1);
 
-        jMenu3.setText("Operação");
+        jMenu3.setText("Agenda");
 
         jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/scheduling_icon.png"))); // NOI18N
         jMenuItem3.setText("Agendar");

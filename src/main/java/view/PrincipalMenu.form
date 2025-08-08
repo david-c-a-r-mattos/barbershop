@@ -35,7 +35,7 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu3">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Opera&#xe7;&#xe3;o"/>
+            <Property name="text" type="java.lang.String" value="Agenda"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem3">
